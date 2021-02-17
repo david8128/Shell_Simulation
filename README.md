@@ -45,9 +45,12 @@ Ir al archivo (En WSL) $HOME\src\AirSim\ros\src\airsim_car_ros_pkgs\src\airsim_n
     std::string host_ip = "172.18.208.1";
  ```
 # Crear el catkin workspace (en WSL): 
-1. Navegar hasta la carpeta donde está ros, ejecutar los comandos preliminares
+
+1. Navegar hasta la carpeta donde está ros, ejecutar los comandos preliminares (cuando diga si quiere borrar las carpetas después de catkin clean diga yes)
    ```bash
-   cd $HOME/src/AirSim/ros;   . /opt/ros/melodic/setup.bash;   rosdep install src -y --from-paths -i;
+   cd $HOME/src/AirSim/ros
+   catkin clean
+   . /opt/ros/melodic/setup.bash;   rosdep install src -y --from-paths -i;
    catkin init;   catkin config -e /opt/ros/melodic;   catkin config --install;   catkin config --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo;
    ```
 
