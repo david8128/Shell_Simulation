@@ -12,18 +12,77 @@ A ROS wrapper over the AirSim C++ client library.
 
 Una vez configurado ejecutar los siguientes comandos en el terminal de WSL:
 ```bat
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 >> source ~/.bashrc
-export WSL_HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}') >> source ~/.bashrc
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 >> ~/.bashrc
+export WSL_HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}') >> ~/.bashrc
 ```
 
 ##  Build
-- Build AirSim (on WSL)
+1. Instalar algunos paquetes preliminares:
+```bash
+sudo apt update
+sudo apt install build-essential git git-lfs gcc-8 g++-8 python-catkin-tools
 ```
-git clone https://github.com/Microsoft/AirSim.git;
-cd AirSim;
-./setup.sh;
-./build.sh;
+2. Download and build Unreal Engine for Linux (on WSL): 
+```bat
+ cd $HOME/
+ git clone -b 4.24 https://github.com/EpicGames/UnrealEngine.git
 ```
+ - Pasar nombre de usuario y contraseña cuando lo pida. Una vez descargado todo navegamos hacia la carpeta y ejecutamos el script de setup. IMPORTANTE: NO USAR SUDO
+```bat
+ cd $HOME/UnrealEngine/
+ ./Setup.sh
+```
+ - Una vez terminado se ejecuta Generate files:
+```bat
+ ./GenerateProjectFiles.sh
+```
+ - Y ahora compilar:
+```bat
+ make
+```
+Cualquier duda revisar el [instructivo oficial de Unreal](https://docs.unrealengine.com/en-US/SharingAndReleasing/Linux/BeginnerLinuxDeveloper/SettingUpAnUnrealWorkflow/index.html)
+2.1 (Opcional pero facilita la vida) Instalar ue4cli: 
+ - en un terminal de WSL correr:
+ ```bat
+  sudo pip3 install ue4cli
+ ```
+ (Instalar pip3 si hace falta)
+ - Añadir al PATH la ubicación de Unreal:
+ ```bat
+  export PATH=$PATH:$HOME/UnealEngine/Engine/Binaries/Linux/ >> ~/.bashrc
+ ```
+ 2. Clone SwRI's AirSim fork:
+   ```bash
+   mkdir -p $HOME/src/
+   cd $HOME/src
+   git clone https://github.com/swri-robotics/AirSim.git
+   ```
+
+3. Clone this repository inside AirSim's Unreal/Environments directory:
+   ```bash
+   mkdir -p $HOME/src/AirSim/Unreal/Environments/
+   cd $HOME/src/AirSim/Unreal/Environments/
+   git clone https://github.com/swri-robotics/Neighborhood.git
+   ```
+
+4. Use git-lfs to grab the full contents of the directory:
+```bash
+cd $HOME/src/AirSim/Unreal/Environments/Neighborhood
+git lfs pull
+```
+
+5. Build AirSim:
+   ```bash
+   cd $HOME/src/AirSim
+   ./setup.sh
+   ./build-neighborhood.sh
+   ```
+
+6. Build the Neighborhood environment:
+   ```bash
+   cd $HOME/src/AirSim/Unreal/Environments/Neighborhood
+   ue4 build
+   ```
 ## Building the ROS Node
 # Preliminares: conectando el módulo AirSim de Windows con WSL y ROS
 # Using AirSim ROS wrapper 
