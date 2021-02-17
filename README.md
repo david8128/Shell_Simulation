@@ -3,6 +3,8 @@ Un pequeño tutorial de cómo usar la herramienta airsim en Windows con el wrapp
 A ROS wrapper over the AirSim C++ client library. 
 
 ##  Setup 
+### NOTA: Este repositorio debe ser clonado en la Carpeta AirSim/ros/src
+
 ### Descargar e instalar Unreal Engine desde Epic Games Launcher
 ### Windows Subsytem for Linux on Windows 10
 - WSL setup:
