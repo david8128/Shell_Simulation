@@ -48,9 +48,13 @@ Ir al archivo (En WSL) $HOME\src\AirSim\ros\src\airsim_car_ros_pkgs\src\airsim_n
    CC=gcc-8 CXX=g++-8 catkin build
    ```
 ## Correr
-1. Copiar el archivo settings.json de este repositorio a la carpeta Documentos/Airsim (Falta corregir por qué no detecta el archivo)
-2. Correr el entorno en AirSim para Windows (Hasta ahora no se ha probado si funciona con los binarios precompilados).
-3. Correr las siguientes líneas de código en un nuevo terminal de WSL
+1. Copiar el archivo settings.json de este repositorio a la carpeta en donde está el binario (En este caso: D:\AirSim\Unreal\Environments\Neighborhood\settings.json)
+2. Editar el archivo run.bat para que busque los settings en la carpeta donde está el binario:
+```bat
+start AirSimNH -windowed --settings 'D:\AirSim\Unreal\Environments\Neighborhood\settings.json'
+```
+3. Correr el entorno en AirSim para Windows.
+4. Correr las siguientes líneas de código en un nuevo terminal de WSL
 ```bash
 source devel/setup.bash;
 roslaunch airsim_car_ros_pkgs airsim_node.launch output:=screen host:=$WSL_HOST_IP
