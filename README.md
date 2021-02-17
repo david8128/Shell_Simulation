@@ -41,7 +41,8 @@ sudo apt install build-essential git git-lfs gcc-8 g++-8 python-catkin-tools
  make
 ```
 Cualquier duda revisar el [instructivo oficial de Unreal](https://docs.unrealengine.com/en-US/SharingAndReleasing/Linux/BeginnerLinuxDeveloper/SettingUpAnUnrealWorkflow/index.html)
-2.1 (Opcional pero facilita la vida) Instalar ue4cli: 
+
+2.1. (Opcional pero facilita la vida) Instalar ue4cli: 
  - en un terminal de WSL correr:
  ```bat
   sudo pip3 install ue4cli
