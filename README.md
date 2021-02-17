@@ -61,4 +61,4 @@ Y en un nuevo terminal:
 roslaunch airsim_car_ros_pkgs rviz.launch;
 ```
 
-
+Rezar para que funcione. Contacto en juctorresme@unal.edu.co
