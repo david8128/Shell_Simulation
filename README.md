@@ -5,23 +5,12 @@ A ROS wrapper over the AirSim C++ client library.
 ##  Setup 
 ### NOTA: Este repositorio debe ser clonado en la Carpeta AirSim/ros/src
 
-### Descargar e instalar Unreal Engine desde Epic Games Launcher
+### Descargar e instalar Unreal Engine desde Epic Games Launcher (para windows)
+### Descargar y montar [AirSim para windows](https://microsoft.github.io/AirSim/build_windows/)
 ### Windows Subsytem for Linux on Windows 10
-- WSL setup:
-  * Get [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-  * Get [Ubuntu 16.04](https://www.microsoft.com/en-us/p/ubuntu-1604-lts/9pjn388hp8c9?activetab=pivot:overviewtab) or [Ubuntu 18.04](https://www.microsoft.com/en-us/p/ubuntu-1804-lts/9n9tngvndl3q?activetab=pivot%3Aoverviewtab)  
-  * Go to Ubuntu 16 / 18 instructions!
+[Instrucciones para instalar WSL2 y ROS Melodic](https://jack-kawell.com/2020/06/12/ros-wsl2/)
 
-
-- Setup for X apps (like RViz, rqt_image_view, terminator) in Windows + WSL
-  * Install [Xming X Server](https://sourceforge.net/projects/xming/). 
-  * Find and run `XLaunch` from the Windows start menu.   
-  Select `Multiple Windows` in first popup, `Start no client` in second popup, **only** `Clipboard` in third popup. Do **not** select `Native Opengl`.  
-  * Open Ubuntu 16.04 / 18.04 session by typing `Ubuntu 16.04`  / `Ubuntu 18.04` in Windows start menu.  
-  * Recommended: Install [terminator](http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html) : `$ sudo apt-get install terminator.` 
-    - You can open terminator in a new window by entering `$ DISPLAY=:0 terminator -u`. 
-
-Ejecutar los siguientes comandos en el terminal de WSL:
+Una vez configurado ejecutar los siguientes comandos en el terminal de WSL:
 ```bat
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 >> source ~/.bashrc
 export WSL_HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}') >> source ~/.bashrc
