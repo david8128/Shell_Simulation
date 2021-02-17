@@ -19,6 +19,12 @@ A ROS wrapper over the AirSim C++ client library.
   * Recommended: Install [terminator](http://www.ubuntugeek.com/terminator-multiple-gnome-terminals-in-one-window.html) : `$ sudo apt-get install terminator.` 
     - You can open terminator in a new window by entering `$ DISPLAY=:0 terminator -u`. 
 
+Ejecutar los siguientes comandos en el terminal de WSL:
+```bat
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 >> source ~/.bashrc
+export WSL_HOST_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}') >> source ~/.bashrc
+```
+
 ##  Build
 - Build AirSim (on WSL)
 ```
