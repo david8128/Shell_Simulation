@@ -4,7 +4,8 @@
   <version>0.0.1</version>
   <description>ROS Wrapper over AirSim's C++ client library</description>
 
-  <maintainer email="preed@swri.org">P. J. Reed</maintainer>
+  <maintainer email="daafonsecato@unal.edu.co">David Fonseca</maintainer>
+  <maintainer email="juctorresme@unal.edu.co">Juan Camilo Torres</maintainer>
 
   <license>MIT</license>
 

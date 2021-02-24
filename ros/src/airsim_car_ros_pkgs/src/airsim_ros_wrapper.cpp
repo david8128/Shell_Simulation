@@ -100,7 +100,7 @@ void AirsimROSWrapper::initialize_ros()
   double update_airsim_control_every_n_sec;
   nh_private_.getParam("is_vulkan", is_vulkan_);
   nh_private_.getParam("update_airsim_control_every_n_sec", update_airsim_control_every_n_sec);
-  nh_private_.param("publish_vehicle_tf", publish_vehicle_tf_, false);
+  nh_private_.param("publish_vehicle_tf", publish_vehicle_tf_, true);
   nh_private_.param("publish_enu", publish_enu_, true);
   vel_cmd_duration_ = 0.05; // todo rosparam
   // todo enforce dynamics constraints in this node as well?
@@ -414,7 +414,7 @@ AirsimROSWrapper::get_odom_msg_from_airsim_state(const msr::airlib::CarApiBase::
 sensor_msgs::PointCloud2 AirsimROSWrapper::get_lidar_msg_from_airsim(const msr::airlib::LidarData& lidar_data) const
 {
   sensor_msgs::PointCloud2 lidar_msg;
-  lidar_msg.header.frame_id = world_frame_id_; // todo
+  lidar_msg.header.frame_id = "PhysXCar/odom_local_enu"; // todo
 
   if (lidar_data.point_cloud.size() > 3) {
     lidar_msg.height = 1;
@@ -582,7 +582,7 @@ void AirsimROSWrapper::drone_state_timer_cb(const ros::TimerEvent& event)
 
         // convert airsim drone state to ROS msgs
         car_ros.curr_odom_ned = get_odom_msg_from_airsim_state(car_ros.curr_drone_state);
-        car_ros.curr_odom_ned.header.frame_id = car_ros.vehicle_name;
+        car_ros.curr_odom_ned.header.frame_id = world_frame_id_;
         car_ros.curr_odom_ned.child_frame_id = car_ros.odom_frame_id;
         car_ros.curr_odom_ned.header.stamp = curr_ros_time;
 

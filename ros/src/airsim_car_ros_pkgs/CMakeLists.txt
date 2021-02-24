@@ -117,6 +117,7 @@ target_link_libraries(pd_position_controller_simple_node pd_position_controller_
 catkin_install_python(
   PROGRAMS
     nodes/airsim_ps_joy
+    nodes/airsim_teleop
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
